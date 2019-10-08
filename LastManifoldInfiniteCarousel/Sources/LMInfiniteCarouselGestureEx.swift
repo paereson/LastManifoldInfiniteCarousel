@@ -1,6 +1,6 @@
 //
 //  LMInfiniteCarouselGestureEx.swift
-//  InfiniteCarousel
+//  LMInfiniteCarouselGestureEx
 //
 //  Created by Grzegorz Kurnatowski on 29/09/2019.
 //  Copyright © 2019 Grzegorz Kurnatowski. All rights reserved.
@@ -43,37 +43,39 @@ extension LMInfiniteCarousel: UIGestureRecognizerDelegate {
     
     func partMoveToLeft(firstSlide: UIView, secondSlide: UIView, thirdSlide: UIView) {
         
+        let percentCGFloatSize = CGFloat(self.sideViewPercentSize)
+        let mainSlidePositionDifference = firstSlide.frame.origin.x + (firstSlide.frame.width / 2)
+        
         UIView.animate(withDuration: 0.7, animations: {
-            let mainSlidePositionDifference = firstSlide.frame.origin.x + (firstSlide.frame.width / 2)
+            firstSlide.transform = CGAffineTransform(scaleX: percentCGFloatSize, y: percentCGFloatSize)
             firstSlide.frame.origin.x = -(firstSlide.frame.width / 2)
             firstSlide.frame.origin.y = self.sideSlidePositionY
-            firstSlide.frame.size.width = self.sideSlideWidth
-            firstSlide.frame.size.height = self.sideSlideHeight
-            
-            thirdSlide.frame.origin.x -= mainSlidePositionDifference
-            
+                        
+            secondSlide.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
             secondSlide.frame.origin.x = firstSlide.frame.maxX + CGFloat(self.slidesOffset)
-            secondSlide.frame.size.width = self.firstSlideWidth
-            secondSlide.frame.size.height = self.firstSlideHeight
             secondSlide.frame.origin.y = self.firstSlidePositionY
+
+            thirdSlide.frame.origin.x -= mainSlidePositionDifference
         })
     }
     
     func partMoveToRight(firstSlide: UIView, secondSlide: UIView, thirdSlide: UIView) {
+        
+        let percentCGFloatSize = CGFloat(self.sideViewPercentSize)
+        let mainSlidePositionDifference = firstSlide.frame.origin.x - (self.frame.width - (firstSlide.frame.width / 2))
+
         UIView.animate(withDuration: 0.7, animations: {
-            let mainSlidePositionDifference = firstSlide.frame.origin.x - (self.frame.width - (firstSlide.frame.width / 2))
+            firstSlide.transform = CGAffineTransform(scaleX: percentCGFloatSize, y: percentCGFloatSize)
             firstSlide.frame.origin.x = self.frame.width - (firstSlide.frame.width / 2)
             firstSlide.frame.origin.y = self.sideSlidePositionY
-            firstSlide.frame.size.width = self.sideSlideWidth
-            firstSlide.frame.size.height = self.sideSlideHeight
             
             secondSlide.frame.origin.x -= mainSlidePositionDifference
-            
+
+            thirdSlide.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
             thirdSlide.frame.origin.x = firstSlide.frame.minX - CGFloat(self.slidesOffset) - thirdSlide.frame.width
-            thirdSlide.frame.size.width = self.firstSlideWidth
-            thirdSlide.frame.size.height = self.firstSlideHeight
             thirdSlide.frame.origin.y = self.firstSlidePositionY
         })
+        
     }
     
     override public func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {

@@ -44,10 +44,8 @@ enum SlideDirection {
         }
     }
     
-    var firstSlideWidth = CGFloat(0)
-    var firstSlideHeight = CGFloat(0)
-    var sideSlideWidth = CGFloat(0)
-    var sideSlideHeight = CGFloat(0)
+    var slideWidth = CGFloat(0)
+    var slideHeight = CGFloat(0)
     
     var firstSlidePositionX = CGFloat(0)
     var firstSlidePositionY = CGFloat(0)
@@ -85,28 +83,36 @@ enum SlideDirection {
                 return
         }
         
-        firstSlideWidth = frame.width * CGFloat(widthPercent)
-        firstSlideHeight = frame.height * CGFloat(heightPercent)
-        sideSlideWidth = firstSlideWidth * CGFloat(sideViewPercentSize)
-        sideSlideHeight = firstSlideHeight * CGFloat(sideViewPercentSize)
+        slideWidth = frame.width * CGFloat(widthPercent)
+        slideHeight = frame.height * CGFloat(heightPercent)
         
-        firstSlidePositionX = (frame.width - firstSlideWidth) / 2
-        firstSlidePositionY = (frame.height - firstSlideHeight) / 2
+        firstSlidePositionX = (frame.width - slideWidth) / 2
+        firstSlidePositionY = (frame.height - slideHeight) / 2
         
-        firstSlide.frame = CGRect(x: firstSlidePositionX, y: firstSlidePositionY, width: firstSlideWidth, height: firstSlideHeight)
+        firstSlide.frame = CGRect(x: firstSlidePositionX, y: firstSlidePositionY, width: slideWidth, height: slideHeight)
         firstSlide.accessibilityIdentifier = "firstSlide"
         addSubview(firstSlide)
         
-        sideSlidePositionY = (frame.height - sideSlideHeight) / 2
+        let percentHeight = slideHeight * CGFloat(sideViewPercentSize)
+        sideSlidePositionY = (frame.height - percentHeight) / 2
         
         firstSideSlidePositionX = firstSlide.frame.maxX + CGFloat(slidesOffset)
-        secondSlide.frame = CGRect(x: firstSideSlidePositionX, y: sideSlidePositionY, width: sideSlideWidth, height: sideSlideHeight)
+        secondSlide.frame.size.width = slideWidth
+        secondSlide.frame.size.height = slideHeight
+        secondSlide.transform = CGAffineTransform(scaleX: CGFloat(sideViewPercentSize), y: CGFloat(sideViewPercentSize))
+        secondSlide.frame.origin.x = firstSideSlidePositionX
+        secondSlide.frame.origin.y = sideSlidePositionY
         secondSlide.accessibilityIdentifier = "secondSlide"
         addSubview(secondSlide)
         
-        secondSideSlidePositionX = -sideSlideWidth + (firstSlide.frame.origin.x - CGFloat(slidesOffset))
+        let percentWidth = slideWidth * CGFloat(sideViewPercentSize)
+        secondSideSlidePositionX = -percentWidth + (firstSlide.frame.origin.x - CGFloat(slidesOffset))
         
-        thirdSlide.frame = CGRect(x: secondSideSlidePositionX, y: sideSlidePositionY, width: sideSlideWidth, height: sideSlideHeight)
+        thirdSlide.frame.size.width = slideWidth
+        thirdSlide.frame.size.height = slideHeight
+        thirdSlide.transform = CGAffineTransform(scaleX: CGFloat(sideViewPercentSize), y: CGFloat(sideViewPercentSize))
+        thirdSlide.frame.origin.x = secondSideSlidePositionX
+        thirdSlide.frame.origin.y = sideSlidePositionY
         thirdSlide.accessibilityIdentifier = "thirdSlide"
         addSubview(thirdSlide)
     }

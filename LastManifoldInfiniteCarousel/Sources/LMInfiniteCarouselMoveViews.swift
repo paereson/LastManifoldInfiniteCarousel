@@ -1,6 +1,6 @@
 //
 //  LMInfiniteCarouselMoveViews.swift
-//  LMInfiniteCarousel
+//  LMInfiniteCarouselMoveViews
 //
 //  Created by Grzegorz Kurnatowski on 29/09/2019.
 //  Copyright © 2019 Grzegorz Kurnatowski. All rights reserved.
@@ -10,7 +10,7 @@ import UIKit
 
 extension LMInfiniteCarousel {
     func slideToLeft(firstSlide: UIView, secondSlide: UIView, thirdSlide: UIView) {
-                
+        
         if self.currentSlide >= self.slidesEndIndex {
             self.currentSlide = 0
         } else {
@@ -28,28 +28,29 @@ extension LMInfiniteCarousel {
         } else {
             return
         }
-        
-        newSlide.frame.origin.x = secondSlide.frame.maxX + CGFloat(self.slidesOffset)
-        newSlide.frame.origin.y = self.sideSlidePositionY
-        newSlide.frame.size.width = self.sideSlideWidth
-        newSlide.frame.size.height = self.sideSlideHeight
+                
+        newSlide.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+        newSlide.frame.size.width = slideWidth
+        newSlide.frame.size.height = slideHeight
+        newSlide.transform = CGAffineTransform(scaleX: CGFloat(sideViewPercentSize), y: CGFloat(sideViewPercentSize))
+        newSlide.frame.origin.x = secondSlide.frame.maxX + CGFloat(slidesOffset * 3)
+        newSlide.frame.origin.y = sideSlidePositionY
         
         newSlide.accessibilityIdentifier = "newSlide"
         
         self.addSubview(newSlide)
         
         UIView.animate(withDuration: 0.7, animations: {
-            secondSlide.frame = CGRect(x: self.firstSlidePositionX, y: self.firstSlidePositionY, width: self.firstSlideWidth, height: self.firstSlideHeight)
+            secondSlide.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+            secondSlide.frame.origin.x = self.firstSlidePositionX
+            secondSlide.frame.origin.y = self.firstSlidePositionY
             
+            firstSlide.transform = CGAffineTransform(scaleX: CGFloat(self.sideViewPercentSize), y: CGFloat(self.sideViewPercentSize))
             firstSlide.frame.origin.y = self.sideSlidePositionY
             firstSlide.frame.origin.x = self.secondSideSlidePositionX
-            firstSlide.frame.size.width = self.sideSlideWidth
-            firstSlide.frame.size.height = self.sideSlideHeight
-            
+                
             newSlide.frame.origin.y = self.sideSlidePositionY
             newSlide.frame.origin.x = self.firstSideSlidePositionX
-            newSlide.frame.size.width = self.sideSlideWidth
-            newSlide.frame.size.height = self.sideSlideHeight
         })
         
         updateSlide(direction: .left)
@@ -77,27 +78,28 @@ extension LMInfiniteCarousel {
             return
         }
         
+        newSlide.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+        newSlide.frame.size.width = slideWidth
+        newSlide.frame.size.height = slideHeight
+        newSlide.transform = CGAffineTransform(scaleX: CGFloat(sideViewPercentSize), y: CGFloat(sideViewPercentSize))
         newSlide.frame.origin.x = thirdSlide.frame.minX - CGFloat(self.slidesOffset) - thirdSlide.frame.width
         newSlide.frame.origin.y = self.sideSlidePositionY
-        newSlide.frame.size.width = self.sideSlideWidth
-        newSlide.frame.size.height = self.sideSlideHeight
         
         newSlide.accessibilityIdentifier = "newSlide"
         
         self.addSubview(newSlide)
         
         UIView.animate(withDuration: 0.7, animations: {
-            thirdSlide.frame = CGRect(x: self.firstSlidePositionX, y: self.firstSlidePositionY, width: self.firstSlideWidth, height: self.firstSlideHeight)
+            thirdSlide.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+            thirdSlide.frame.origin.x = self.firstSlidePositionX
+            thirdSlide.frame.origin.y = self.firstSlidePositionY
             
+            firstSlide.transform = CGAffineTransform(scaleX: CGFloat(self.sideViewPercentSize), y: CGFloat(self.sideViewPercentSize))
             firstSlide.frame.origin.y = self.sideSlidePositionY
             firstSlide.frame.origin.x = self.firstSideSlidePositionX
-            firstSlide.frame.size.width = self.sideSlideWidth
-            firstSlide.frame.size.height = self.sideSlideHeight
             
             newSlide.frame.origin.y = self.sideSlidePositionY
             newSlide.frame.origin.x = self.secondSideSlidePositionX
-            newSlide.frame.size.width = self.sideSlideWidth
-            newSlide.frame.size.height = self.sideSlideHeight
         })
         
         updateSlide(direction: .right)
@@ -106,19 +108,23 @@ extension LMInfiniteCarousel {
     }
     
     func returnToCenter(firstSlide: UIView, secondSlide: UIView, thirdSlide: UIView) {
+        
+        let percentCGFloatSize = CGFloat(sideViewPercentSize)
+        
         UIView.animate(withDuration: 0.7, animations: {
-            firstSlide.frame = CGRect(x: self.firstSlidePositionX, y: self.firstSlidePositionY, width: self.firstSlideWidth, height: self.firstSlideHeight)
+            firstSlide.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+            firstSlide.frame.origin.x = self.firstSlidePositionX
+            firstSlide.frame.origin.y = self.firstSlidePositionY
             
+            secondSlide.transform = CGAffineTransform(scaleX: percentCGFloatSize, y: percentCGFloatSize)
             secondSlide.frame.origin.x = self.firstSideSlidePositionX
-            secondSlide.frame.size.width = self.sideSlideWidth
-            secondSlide.frame.size.height = self.sideSlideHeight
             secondSlide.frame.origin.y = self.sideSlidePositionY
             
+            thirdSlide.transform = CGAffineTransform(scaleX: percentCGFloatSize, y: percentCGFloatSize)
             thirdSlide.frame.origin.x = self.secondSideSlidePositionX
-            thirdSlide.frame.size.width = self.sideSlideWidth
-            thirdSlide.frame.size.height = self.sideSlideHeight
             thirdSlide.frame.origin.y = self.sideSlidePositionY
         })
+        
     }
     
     func updateSlide(direction: SlideDirection) {
@@ -166,6 +172,7 @@ extension LMInfiniteCarousel {
             self.addSubview(newSlide)
             
             secondSlide?.removeFromSuperview()
+            
         case .center:
             return
         }
