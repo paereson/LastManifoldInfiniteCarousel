@@ -66,7 +66,6 @@ enum SlideDirection {
         heightPercent /= 100
         sideViewPercentSize /= 100
         
-        
         firstLoadSlides()
     }
     
