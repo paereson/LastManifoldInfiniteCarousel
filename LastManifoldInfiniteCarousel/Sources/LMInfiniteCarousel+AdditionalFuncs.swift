@@ -13,5 +13,6 @@ extension LMInfiniteCarousel {
         widthPercent *= 100
         heightPercent *= 100
         sideViewPercentSize *= 100
+        currentSlide = 0
     }
 }
