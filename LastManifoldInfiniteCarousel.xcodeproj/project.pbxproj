@@ -13,6 +13,7 @@
 		1A6B91092341568F003E24F0 /* LMInfiniteCarouselGestureEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6B91082341568F003E24F0 /* LMInfiniteCarouselGestureEx.swift */; };
 		1A6B910B234156A2003E24F0 /* LMInfiniteCarouselMoveViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6B910A234156A2003E24F0 /* LMInfiniteCarouselMoveViews.swift */; };
 		1A6B910C234156F4003E24F0 /* LMInfiniteCarousel.swift in Headers */ = {isa = PBXBuildFile; fileRef = 1A6B91042341566D003E24F0 /* LMInfiniteCarousel.swift */; settings = {ATTRIBUTES = (Public, ); }; };
+		2CA884F424EF382C006A6561 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA884F324EF382C006A6561 /* Package.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		1A6B91062341567E003E24F0 /* LMInfiniteCarouselCollecetionEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMInfiniteCarouselCollecetionEx.swift; sourceTree = "<group>"; };
 		1A6B91082341568F003E24F0 /* LMInfiniteCarouselGestureEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMInfiniteCarouselGestureEx.swift; sourceTree = "<group>"; };
 		1A6B910A234156A2003E24F0 /* LMInfiniteCarouselMoveViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMInfiniteCarouselMoveViews.swift; sourceTree = "<group>"; };
+		2CA884F324EF382C006A6561 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 			children = (
 				1A6B90FB2341564B003E24F0 /* LastManifoldInfiniteCarousel.h */,
 				1A6B91032341565E003E24F0 /* Sources */,
+				2CA884F324EF382C006A6561 /* Package.swift */,
 				1A6B90FC2341564B003E24F0 /* Info.plist */,
 			);
 			path = LastManifoldInfiniteCarousel;
@@ -155,6 +158,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CA884F424EF382C006A6561 /* Package.swift in Sources */,
 				1A6B91092341568F003E24F0 /* LMInfiniteCarouselGestureEx.swift in Sources */,
 				1A6B91052341566D003E24F0 /* LMInfiniteCarousel.swift in Sources */,
 				1A6B910B234156A2003E24F0 /* LMInfiniteCarouselMoveViews.swift in Sources */,
@@ -294,7 +298,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = ZP6RVHY5ZL;
+				DEVELOPMENT_TEAM = 5KV6LY7RW3;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -320,7 +324,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = ZP6RVHY5ZL;
+				DEVELOPMENT_TEAM = 5KV6LY7RW3;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";

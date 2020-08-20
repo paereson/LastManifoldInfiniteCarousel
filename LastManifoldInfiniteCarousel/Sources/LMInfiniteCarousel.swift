@@ -44,18 +44,18 @@ enum SlideDirection {
         }
     }
     
-    var slideWidth = CGFloat(0)
-    var slideHeight = CGFloat(0)
+    var slideWidth: CGFloat = 0
+    var slideHeight: CGFloat = 0
     
-    var firstSlidePositionX = CGFloat(0)
-    var firstSlidePositionY = CGFloat(0)
+    var firstSlidePositionX: CGFloat = 0
+    var firstSlidePositionY: CGFloat = 0
     
-    var firstSideSlidePositionX = CGFloat(0)
-    var sideSlidePositionY = CGFloat(0)
+    var firstSideSlidePositionX: CGFloat = 0
+    var sideSlidePositionY: CGFloat = 0
     
-    var secondSideSlidePositionX = CGFloat(0)
+    var secondSideSlidePositionX: CGFloat = 0
     
-    var touchesStartPosition = CGFloat(0)
+    var touchesStartPosition: CGFloat = 0
     
     var slideDirection: SlideDirection = .left
     
