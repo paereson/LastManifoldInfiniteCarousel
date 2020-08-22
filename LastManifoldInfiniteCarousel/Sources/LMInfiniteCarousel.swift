@@ -76,9 +76,9 @@ enum SlideDirection {
     
     private func firstLoadSlides() {
 
-        guard let firstSlide = slides[exist: 0],
+        guard let firstSlide = slides.first,
             let secondSlide = slides[exist: 1],
-            let thirdSlide = slides[exist: 2] else {
+            let thirdSlide = slides.last else {
                 return
         }
         
