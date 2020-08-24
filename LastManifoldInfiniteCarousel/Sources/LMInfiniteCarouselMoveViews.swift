@@ -21,7 +21,11 @@ extension LMInfiniteCarousel {
         
         let newSlide: UIView
         
-        if let fourthSlide = slides[exist: newSlideIndex] {
+        if slides.count < 3, currentSlide % 2 != 0, let fourthSlide = try? slides.first?.copyObject() as? UIView {
+            newSlide = fourthSlide
+        } else if slides.count < 3, let fourthSlide = try? slides.last?.copyObject() as? UIView {
+            newSlide = fourthSlide
+        } else if let fourthSlide = slides[exist: newSlideIndex] {
             newSlide = fourthSlide
         } else if let fourtSlide = slides.first {
             newSlide = fourtSlide
@@ -70,7 +74,11 @@ extension LMInfiniteCarousel {
         
         let newSlide: UIView
         
-        if let fourthSlide = slides[exist: newSlideIndex] {
+        if slides.count < 3, currentSlide % 2 == 0, let fourthSlide = try? slides.last?.copyObject() as? UIView {
+            newSlide = fourthSlide
+        } else if slides.count < 3, let fourthSlide = try? slides.first?.copyObject() as? UIView {
+            newSlide = fourthSlide
+        } else if let fourthSlide = slides[exist: newSlideIndex] {
             newSlide = fourthSlide
         } else if let fourthSlide = slides.last {
             newSlide = fourthSlide

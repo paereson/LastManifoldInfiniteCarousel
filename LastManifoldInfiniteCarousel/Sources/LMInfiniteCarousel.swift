@@ -75,12 +75,8 @@ enum SlideDirection {
     }
     
     private func firstLoadSlides() {
-
-        guard let firstSlide = slides.first,
-            let secondSlide = slides[exist: 1],
-            let thirdSlide = slides.last else {
-                return
-        }
+        
+        let (firstSlide, secondSlide, thirdSlide) = prepareSlides()
         
         slideWidth = frame.width * CGFloat(widthPercent)
         slideHeight = frame.height * CGFloat(heightPercent)
@@ -114,6 +110,46 @@ enum SlideDirection {
         thirdSlide.frame.origin.y = sideSlidePositionY
         thirdSlide.accessibilityIdentifier = "thirdSlide"
         addSubview(thirdSlide)
+    }
+    
+    private func prepareSlides() -> (UIView, UIView, UIView) {
+        switch slides.count {
+        case 0:
+            return (UIView(), UIView(), UIView())
+        case 1:
+            return prepareOneSlide()
+        case 2:
+            return prepareTwoSlides()
+        default:
+            return prepareMoreSlides()
+        }
+    }
+    
+    private func prepareOneSlide() -> (UIView, UIView, UIView) {
+        guard let firstSlide = slides.first,
+            let secondSlide = try? slides.first?.copyObject() as? UIView,
+            let thirdSlide = try? slides.first?.copyObject() as? UIView else {
+                return (UIView(), UIView(), UIView())
+        }
+        return (firstSlide, secondSlide, thirdSlide)
+    }
+    
+    private func prepareTwoSlides() -> (UIView, UIView, UIView) {
+        guard let firstSlide = slides.first,
+            let secondSlide = slides.last,
+            let thirdSlide = try? slides.last?.copyObject() as? UIView  else {
+                return (UIView(), UIView(), UIView())
+        }
+        return (firstSlide, secondSlide, thirdSlide)
+    }
+    
+    private func prepareMoreSlides() -> (UIView, UIView, UIView) {
+        guard let firstSlide = slides.first,
+            let secondSlide = slides[exist: 1],
+            let thirdSlide = slides.last else {
+                return (UIView(), UIView(), UIView())
+        }
+        return (firstSlide, secondSlide, thirdSlide)
     }
     
     public func getSlidesCount() -> Int {
