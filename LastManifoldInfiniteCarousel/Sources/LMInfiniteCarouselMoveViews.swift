@@ -140,7 +140,7 @@ extension LMInfiniteCarousel {
             let newSlide = subviews.first(where: {$0.accessibilityIdentifier == "newSlide"}) else {
                 return
         }
-        
+        touchesStartPosition = 0
         let secondSlide = subviews.first(where: {$0.accessibilityIdentifier == "secondSlide"})
         let thirdSlide = subviews.first(where: {$0.accessibilityIdentifier == "thirdSlide"})
         
