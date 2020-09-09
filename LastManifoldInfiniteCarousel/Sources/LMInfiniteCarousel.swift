@@ -32,6 +32,7 @@ enum SlideDirection {
     @IBInspectable var heightPercent: Float = 70.0
     @IBInspectable var sideViewPercentSize: Float = 70.0
     @IBInspectable var slidesOffset: Float = 10.0
+    @IBInspectable var animationDuration: Double = 7.0
     
     public weak var delegate: LMInfiniteCarouselDelegate?
     
@@ -65,6 +66,7 @@ enum SlideDirection {
         widthPercent /= 100
         heightPercent /= 100
         sideViewPercentSize /= 100
+        animationDuration /= 10
         
         firstLoadSlides()
     }

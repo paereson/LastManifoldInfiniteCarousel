@@ -43,8 +43,8 @@ extension LMInfiniteCarousel {
         newSlide.accessibilityIdentifier = "newSlide"
         
         self.addSubview(newSlide)
-        
-        UIView.animate(withDuration: 0.7, animations: {
+
+        UIView.animate(withDuration: animationDuration, animations: {
             secondSlide.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
             secondSlide.frame.origin.x = self.firstSlidePositionX
             secondSlide.frame.origin.y = self.firstSlidePositionY
@@ -97,7 +97,7 @@ extension LMInfiniteCarousel {
         
         self.addSubview(newSlide)
         
-        UIView.animate(withDuration: 0.7, animations: {
+        UIView.animate(withDuration: animationDuration, animations: {
             thirdSlide.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
             thirdSlide.frame.origin.x = self.firstSlidePositionX
             thirdSlide.frame.origin.y = self.firstSlidePositionY
@@ -119,7 +119,7 @@ extension LMInfiniteCarousel {
         
         let percentCGFloatSize = CGFloat(sideViewPercentSize)
         
-        UIView.animate(withDuration: 0.7, animations: {
+        UIView.animate(withDuration: animationDuration, animations: {
             firstSlide.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
             firstSlide.frame.origin.x = self.firstSlidePositionX
             firstSlide.frame.origin.y = self.firstSlidePositionY

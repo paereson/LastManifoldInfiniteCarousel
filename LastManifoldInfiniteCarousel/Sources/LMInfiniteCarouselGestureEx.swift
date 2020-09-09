@@ -46,7 +46,7 @@ extension LMInfiniteCarousel: UIGestureRecognizerDelegate {
         let percentCGFloatSize = CGFloat(self.sideViewPercentSize)
         let mainSlidePositionDifference = firstSlide.frame.origin.x + (firstSlide.frame.width / 2)
         
-        UIView.animate(withDuration: 0.7, animations: {
+        UIView.animate(withDuration: animationDuration, animations: {
             firstSlide.transform = CGAffineTransform(scaleX: percentCGFloatSize, y: percentCGFloatSize)
             firstSlide.frame.origin.x = -(firstSlide.frame.width / 2)
             firstSlide.frame.origin.y = self.sideSlidePositionY
@@ -64,7 +64,7 @@ extension LMInfiniteCarousel: UIGestureRecognizerDelegate {
         let percentCGFloatSize = CGFloat(self.sideViewPercentSize)
         let mainSlidePositionDifference = firstSlide.frame.origin.x - (self.frame.width - (firstSlide.frame.width / 2))
 
-        UIView.animate(withDuration: 0.7, animations: {
+        UIView.animate(withDuration: animationDuration, animations: {
             firstSlide.transform = CGAffineTransform(scaleX: percentCGFloatSize, y: percentCGFloatSize)
             firstSlide.frame.origin.x = self.frame.width - (firstSlide.frame.width / 2)
             firstSlide.frame.origin.y = self.sideSlidePositionY
@@ -79,6 +79,7 @@ extension LMInfiniteCarousel: UIGestureRecognizerDelegate {
     }
     
     override public func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        touchesStartPosition = 0
         guard let firstSlide = subviews.first(where: {$0.accessibilityIdentifier == "firstSlide"}),
             let secondSlide = subviews.first(where: {$0.accessibilityIdentifier == "secondSlide"}),
             let thirdSlide = subviews.first(where: {$0.accessibilityIdentifier == "thirdSlide"}) else {
