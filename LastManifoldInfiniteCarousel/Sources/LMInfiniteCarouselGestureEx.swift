@@ -80,7 +80,7 @@ extension LMInfiniteCarousel: UIGestureRecognizerDelegate {
     
     override public func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         touchesStartPosition = 0
-        guard let firstSlide = subviews.first(where: {$0.accessibilityIdentifier == "firstSlide"}),
+        guard let slideDirection = slideDirection, let firstSlide = subviews.first(where: {$0.accessibilityIdentifier == "firstSlide"}),
             let secondSlide = subviews.first(where: {$0.accessibilityIdentifier == "secondSlide"}),
             let thirdSlide = subviews.first(where: {$0.accessibilityIdentifier == "thirdSlide"}) else {
                 return
@@ -93,5 +93,6 @@ extension LMInfiniteCarousel: UIGestureRecognizerDelegate {
         case .center:
             returnToCenter(firstSlide: firstSlide, secondSlide: secondSlide, thirdSlide: thirdSlide)
         }
+        self.slideDirection = nil
     }
 }

@@ -58,7 +58,7 @@ enum SlideDirection {
     
     var touchesStartPosition: CGFloat = 0
     
-    var slideDirection: SlideDirection = .left
+    var slideDirection: SlideDirection?
     
     private func setup() {
         slidesEndIndex = slides.count - 1
