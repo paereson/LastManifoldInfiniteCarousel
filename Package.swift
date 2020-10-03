@@ -1,4 +1,3 @@
-// swift-tools-version:5.2.3
 import PackageDescription
 
 let package = Package(
