@@ -20,7 +20,7 @@ enum SlideDirection {
 
 @IBDesignable public class LMInfiniteCarousel: UIView {
     
-    override init(frame: CGRect) {
+    override public init(frame: CGRect) {
         super.init(frame: frame)
     }
     
@@ -28,11 +28,11 @@ enum SlideDirection {
         super.init(coder: aDecoder)
     }
     
-    @IBInspectable var widthPercent: Float = 70.0
-    @IBInspectable var heightPercent: Float = 70.0
-    @IBInspectable var sideViewPercentSize: Float = 70.0
-    @IBInspectable var slidesOffset: Float = 10.0
-    @IBInspectable var animationDuration: Double = 7.0
+    @IBInspectable public var widthPercent: Float = 70.0
+    @IBInspectable public var heightPercent: Float = 70.0
+    @IBInspectable public var sideViewPercentSize: Float = 70.0
+    @IBInspectable public var slidesOffset: Float = 10.0
+    @IBInspectable public var animationDuration: Double = 7.0
     
     public weak var delegate: LMInfiniteCarouselDelegate?
     
